@@ -73,12 +73,49 @@ namespace BattleArenaDream_CSharp
 			Console.WriteLine("How strange, you look around to see you are standing in an arena with no crowd.");
 			Console.WriteLine("\nIs this real life or a dream?");
 
+			Console.WriteLine("Test");
+
 			// The dream runs an infinite loop so the user must close the app in order to exit.
 			while (true)
             {
-				Dice dice = new Dice();
 				
-            }
+				// start a new round
+
+				// set the variables
+				int turns = 10;
+				Player player = new Player(); // the user's stats
+				Enemy enemy = new Enemy(); // the current enemy
+				Dice dice = new Dice(); // dice to roll
+				//string death = "\nYou have been killed!"; // this is the default unless panic increases to 20
+
+				// this loop will go as long as user has not died and they are not out of turns
+				while (player.isAlive() == true)
+                {
+					showStats(player, enemy, turns); // show the stats
+
+					// see if enemy has been defeated, replace it with a new one if it's dead
+					// putting it here so that the player can see the enemy HP go to 0
+					if (!enemy.isAlive())
+                    {
+						Console.WriteLine("\nThe enemy falls to its death!\nA gate rumbles opens to reveal another menacing goblin." +
+							"\n...How many must you kill before this ends?");
+						enemy = new Enemy();
+					}
+
+					// put a pause so the player can read what's happening
+					if (turns == 10)
+                    {
+						// only show this on first turn
+						Console.WriteLine("\nAn angry goblin in armor stands before you.\n(Hit enter to roll for an attack.)");
+					}
+					else
+                    {
+						Console.WriteLine($"\nYou have {turns} turns left.\n(Hit enter to roll for an attack.)");
+					}
+					Console.Read(); // this is like printLine in Java
+				}
+
+			}
 
 		}
 

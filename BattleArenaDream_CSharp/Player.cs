@@ -12,6 +12,21 @@ namespace BattleArenaDream_CSharp
 
         public Player() { } // for good measure
 
+        // methods
+
+        // check if the user is alive
+        public bool isAlive()
+        {
+            if (stamina > 0 && panic < 20)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // getters and setters - using new shortcut
         public int Stamina 
         {
