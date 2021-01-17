@@ -69,12 +69,14 @@ namespace BattleArenaDream_CSharp
 					"|__) /~~\\  |   |  |___ |___    /~~\\ |  \\ |___ | \\| /~~\\ \n");
 			Console.WriteLine("You open your eyes to see a sword in one hand and a shield in the other. You hear cheering.");
 			Console.WriteLine("How strange, you look around to see you are standing in an arena with no crowd.");
-			Console.WriteLine("\nIs this real life or a dream?");// notes for reference
-																 // Console.Read();
-																 // Console.WriteLine($"My age is {myAge}. Your age is {yourAge}.");
-																 // \r means a carriage return - moves cursor to the very far left
+			Console.WriteLine("\nIs this real life or a dream?");
 
-			
+			// The dream runs an infinite loop so the user must close the app in order to exit.
+			while (true)
+            {
+
+            }
+
 		}
-    }
+	}
 }
