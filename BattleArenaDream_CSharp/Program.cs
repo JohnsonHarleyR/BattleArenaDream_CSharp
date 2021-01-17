@@ -81,5 +81,68 @@ namespace BattleArenaDream_CSharp
             }
 
 		}
+
+		// Methods for the game
+
+		// Show player's stats
+		public static void showStats(Player player, Enemy enemy, int turns)
+        {
+			if (turns == 10) // only on first turn
+            {
+				Console.WriteLine("\n*Your Stats*");
+            }
+			else
+            {
+				Console.WriteLine("\n*New Stats*");
+			}
+			Console.WriteLine($"Stamina: {player.Stamina}"); // new trick in C# but not Java - try to remember this
+			Console.WriteLine($"Panic Level: {player.Panic}");
+			Console.WriteLine($"Enemy HP: {enemy.Hp}");
+		}
+
+		// Get the outcome of a dice roll
+		public static void getOutcome(Player player, Enemy enemy, Dice dice)
+        {
+			// determine the outcome by what the player rolled
+			int diceRoll = dice.DiceRoll;
+
+			switch (diceRoll)
+            {
+				case 1:
+					Console.WriteLine("The enemy smirks as he taunts you. He seeks to intimidate."
+							+ "\nIt works. Your panic increases by 2.");
+					player.Panic = player.Panic + 2;
+					break;
+				case 2:
+					Console.WriteLine("The enemy attacks! You dodge, but he strikes anyway!\nYour stamina " +
+							"decreases by 1.");
+					player.Stamina = player.Stamina - 1;
+					break;
+				case 3:
+					Console.WriteLine("The enemy strikes, but you block the attack!\nNothing else happens.");
+					break;
+				case 4:
+					Console.WriteLine("You let out a beastly growl. The enemy backs away!\nYour stamina increases by 1.");
+					player.Stamina = player.Stamina + 1;
+					break;
+				case 5:
+					Console.WriteLine("You swing your sword. The enemy dodges, but you strike anyway!" +
+							"\nYour panic reduces by 1. The enemy loses 3 hit points.");
+					player.Panic = player.Panic - 1;
+					enemy.Hp = enemy.Hp - 3;
+					break;
+				case 6:
+					Console.WriteLine("*THWACK* You swing fast to strike a critical blow with your sword!" +
+							"\nYour panic reduces by 3. Your stamina increases by 2. The enemy loses 5 hit points.");
+					player.Panic = player.Panic - 3;
+					player.Stamina = player.Stamina + 2;
+					enemy.Hp = enemy.Hp - 5;
+					break;
+				default:
+					Console.WriteLine("ERROR - not a number 1 through 6");
+					break;
+			}
+        }
+
 	}
 }
