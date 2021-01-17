@@ -8,13 +8,16 @@ namespace BattleArenaDream_CSharp
     class Dice // roll the dice to play the game
     {
         // variables
-        private Random random = new Random();
+
+        // "readonly indicates that an instance member doesn't modify the state of the structure."
+        // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/readonly
+        private readonly Random random = new Random();
         private int diceRoll = 0; // should be rolled before referenced
         
         public Dice() { } // for good measure
 
         // roll the dice
-        public void rollDice()
+        public void RollDice()
         {
             diceRoll = random.Next(1, 6);
         }

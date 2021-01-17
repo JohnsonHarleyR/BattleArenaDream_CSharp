@@ -77,8 +77,8 @@ namespace BattleArenaDream_CSharp
 
 			// The dream runs an infinite loop so the user must close the app in order to exit.
 			while (true)
-            {
-				
+			{
+
 				// start a new round
 
 				// set the variables
@@ -86,17 +86,17 @@ namespace BattleArenaDream_CSharp
 				Player player = new Player(); // the user's stats
 				Enemy enemy = new Enemy(); // the current enemy
 				Dice dice = new Dice(); // dice to roll
-				//string death = "\nYou have been killed!"; // this is the default unless panic increases to 20
+										//string death = "\nYou have been killed!"; // this is the default unless panic increases to 20
 
 				// this loop will go as long as user has not died and they are not out of turns
 				while (player.isAlive() == true)
-                {
-					showStats(player, enemy, turns); // show the stats
+				{
+					ShowStats(player, enemy, turns); // show the stats
 
 					// see if enemy has been defeated, replace it with a new one if it's dead
 					// putting it here so that the player can see the enemy HP go to 0
 					if (!enemy.isAlive())
-                    {
+					{
 						Console.WriteLine("\nThe enemy falls to its death!\nA gate rumbles opens to reveal another menacing goblin." +
 							"\n...How many must you kill before this ends?");
 						enemy = new Enemy();
@@ -104,12 +104,12 @@ namespace BattleArenaDream_CSharp
 
 					// put a pause so the player can read what's happening
 					if (turns == 10)
-                    {
+					{
 						// only show this on first turn
 						Console.WriteLine("\nAn angry goblin in armor stands before you.\n(Hit enter to roll for an attack.)");
 					}
 					else
-                    {
+					{
 						Console.WriteLine($"\nYou have {turns} turns left.\n(Hit enter to roll for an attack.)");
 					}
 					Console.Read(); // this is like printLine in Java
@@ -122,7 +122,7 @@ namespace BattleArenaDream_CSharp
 		// Methods for the game
 
 		// Show player's stats
-		public static void showStats(Player player, Enemy enemy, int turns)
+		public static void ShowStats(Player player, Enemy enemy, int turns)
         {
 			if (turns == 10) // only on first turn
             {
@@ -138,7 +138,7 @@ namespace BattleArenaDream_CSharp
 		}
 
 		// Get the outcome of a dice roll
-		public static void getOutcome(Player player, Enemy enemy, Dice dice)
+		public static void GetOutcome(Player player, Enemy enemy, Dice dice)
         {
 			// determine the outcome by what the player rolled
 			int diceRoll = dice.DiceRoll;
@@ -148,32 +148,32 @@ namespace BattleArenaDream_CSharp
 				case 1:
 					Console.WriteLine("The enemy smirks as he taunts you. He seeks to intimidate."
 							+ "\nIt works. Your panic increases by 2.");
-					player.Panic = player.Panic + 2;
+					player.Panic += 2;
 					break;
 				case 2:
 					Console.WriteLine("The enemy attacks! You dodge, but he strikes anyway!\nYour stamina " +
 							"decreases by 1.");
-					player.Stamina = player.Stamina - 1;
+                    player.Stamina -= 1;
 					break;
 				case 3:
 					Console.WriteLine("The enemy strikes, but you block the attack!\nNothing else happens.");
 					break;
 				case 4:
 					Console.WriteLine("You let out a beastly growl. The enemy backs away!\nYour stamina increases by 1.");
-					player.Stamina = player.Stamina + 1;
+					player.Stamina += 1;
 					break;
 				case 5:
 					Console.WriteLine("You swing your sword. The enemy dodges, but you strike anyway!" +
 							"\nYour panic reduces by 1. The enemy loses 3 hit points.");
-					player.Panic = player.Panic - 1;
-					enemy.Hp = enemy.Hp - 3;
+					player.Panic -= 1;
+					enemy.Hp -= 3;
 					break;
 				case 6:
 					Console.WriteLine("*THWACK* You swing fast to strike a critical blow with your sword!" +
 							"\nYour panic reduces by 3. Your stamina increases by 2. The enemy loses 5 hit points.");
-					player.Panic = player.Panic - 3;
-					player.Stamina = player.Stamina + 2;
-					enemy.Hp = enemy.Hp - 5;
+					player.Panic -= 3;
+					player.Stamina += 2;
+					enemy.Hp -= 5;
 					break;
 				default:
 					Console.WriteLine("ERROR - not a number 1 through 6");
