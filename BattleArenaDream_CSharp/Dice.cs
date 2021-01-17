@@ -10,6 +10,8 @@ namespace BattleArenaDream_CSharp
         // variables
         private Random random = new Random();
         private int diceRoll = 0; // should be rolled before referenced
+        
+        public Dice() { } // for good measure
 
         // roll the dice
         public void rollDice()
@@ -19,11 +21,7 @@ namespace BattleArenaDream_CSharp
 
        // getters and setters
        // TODO See if there's a way to generate getts and setters like in Eclipse
-       public int DiceRoll // there's a shortcut for C#
-        {
-            get { return diceRoll; }
-            set { diceRoll = value; }
-        }
+       public int DiceRoll { get; set; } // there's a shortcut for C# - this is the shortest one
 
     }
 }

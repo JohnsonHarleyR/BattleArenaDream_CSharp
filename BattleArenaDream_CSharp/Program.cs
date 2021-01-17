@@ -4,7 +4,9 @@ namespace BattleArenaDream_CSharp
 {
     class Program
     {
-        static void Main(string[] args)
+		// I re-typed most of the code that is the same as in the Java program, only a few things were 
+		// copy and paste like comments and a couple arrays. I did this for the sake of memorization
+		static void Main(string[] args)
         {
 			// notes for reference
 			// Console.Read();
@@ -74,7 +76,8 @@ namespace BattleArenaDream_CSharp
 			// The dream runs an infinite loop so the user must close the app in order to exit.
 			while (true)
             {
-
+				Dice dice = new Dice();
+				
             }
 
 		}
